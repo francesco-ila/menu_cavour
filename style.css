@@ -1,0 +1,204 @@
+/* =========================
+   ROOT THEME
+========================= */
+
+:root {
+
+
+        /* 🌙 BACKGROUND più soft, non bianco puro */
+    --bg: #e9f1f7;              /* azzurro/grigio leggero */
+    --panel: #ffffff;          /* resta bianco ma stacca meglio */
+    
+    /* testo più profondo (meno “blu spento”) */
+    --text: #102a43;
+    --muted: #627d98;
+
+    /* azzurro più elegante (meno acceso) */
+    --accent: #2b7bbb;
+
+    /* rosso meno aggressivo */
+    --accent-2: #d64550;
+
+    /* bordi più visibili ma soft */
+    --border: #d9e2ec;
+    
+
+    /* FONT SCALE (REM-BASED) */
+    --font-base: 1rem;
+    --font-small: 0.9rem;
+    --font-title: 1.4rem;
+    --font-category: 1.7rem;
+}
+
+/* =========================
+   BASE
+========================= */
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+
+    font-size: var(--font-base);
+    line-height: 1.4;
+}
+
+/* =========================
+   NAV
+========================= */
+
+.nav {
+    position: sticky;
+    top: 0;
+    background: var(--panel);
+    padding: 0.8rem;
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.nav-btn {
+    flex: 0 0 auto;
+    padding: 0.6rem 1rem;
+    background: #f0f6fb;
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 999px;
+
+    font-size: var(--font-small);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.nav-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.nav-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    padding: 1rem;
+}
+
+/* =========================
+   GRID AUTO ADAPTIVE
+========================= */
+
+.grid {
+    display: grid;
+    gap: 1rem;
+
+    /* 🔥 magia: colonne automatiche in base allo spazio */
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+/* =========================
+   CATEGORY
+========================= */
+
+.category {
+    background: var(--panel);
+    padding: 1rem;
+    border-radius: 0.8rem;
+    border: 1px solid var(--border);
+}
+
+.category-title {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: var(--font-category);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* =========================
+   ITEM
+========================= */
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.item-name {
+    font-size: var(--font-base);
+    font-weight: 600;
+}
+
+.item-price {
+    font-size: var(--font-base);
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--accent);
+}
+
+/* ingredienti */
+.ingredients {
+    font-size: var(--font-small);
+    color: var(--muted);
+    margin-top: 0.2rem;
+}
+
+/* =========================
+   HIGHLIGHT LEGGERO ROSSO
+========================= */
+
+.item:hover .item-name {
+    color: var(--accent-2);
+}
+
+/* =========================
+   MOBILE FIX
+========================= */
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    body {
+        font-size: 1.05rem;
+    }
+
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-price {
+        margin-top: 0.2rem;
+    }
+}
+
+/* =========================
+   VERY SMALL DEVICE BOOST
+========================= */
+
+@media (max-width: 380px) {
+    body {
+        font-size: 1.1rem;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+    }
+}
